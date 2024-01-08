@@ -1,0 +1,10 @@
+#convert-emoij {
+    position: relative;
+}
+
+em-emoji-picker {
+    position: absolute;
+    bottom: 40px;
+    right: -200px;
+    z-index: 99999999999;
+}

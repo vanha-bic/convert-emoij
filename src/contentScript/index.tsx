@@ -1,31 +1,54 @@
 import {createRoot} from 'react-dom/client';
-import EmojiPicker from "./picker";
-import {debounce} from "./lib";
+import EmojiPickerHOC from "./picker";
+import stickers from "./data/stickers.json";
 
 
-// ReactDOM.render(<Picker data={data} onEmojiSelect={console.log}/>, document.getElementById('open-pepe-create_post-0'))
 function renderPicker(rootElement: Element) {
   let container = document.createElement('div')
   container.id = 'convert-emoij'
 
   const root = createRoot(container); // createRoot(container!) if you use TypeScript
-  root.render(<EmojiPicker control={rootElement} />);
-  rootElement.querySelector('#advancedTextEditorCell .AutoHeight>div>div')?.append(container)
+
+  chrome.runtime.sendMessage({cmd: "get_packs"}, (rs: []) => {
+    // @ts-ignore
+    let packs = (stickers as [] || []).filter((pack: any) => rs.includes(pack.id))
+    // @ts-ignore
+    packs = packs.sort((a: any, b: any) => rs.indexOf(a.id) - rs.indexOf(b.id))
+    let EmojiPicker = EmojiPickerHOC(rootElement, packs)
+    root.render(<EmojiPicker />);
+    rootElement.querySelector('#advancedTextEditorCell .AutoHeight>div>div')?.append(container)
+  });
+
+
 }
 
-(function load() {
-  const observer = new MutationObserver(debounce(function () {
-    let rootElement = document.querySelector("#create_post")
-    if (rootElement != null && rootElement.querySelector('#convert-emoij') == null) {
+function loadRoot() {
+  let rootElement = document.querySelector("#create_post")
+  if (rootElement != null) {
+    if (rootElement.querySelector('#convert-emoij') == null) {
       renderPicker(rootElement)
+    } else {
+      setTimeout(loadRoot, 2000)
+      return
     }
-    let threadElement = document.querySelector(".ThreadViewer")
-    if (threadElement != null && threadElement.querySelector('#convert-emoij') == null) {
+  }
+  setTimeout(loadRoot, 1000)
+}
+
+loadRoot()
+
+function loadThread() {
+  let threadElement = document.querySelector(".ThreadViewer")
+  if (threadElement != null) {
+    if (threadElement.querySelector('#convert-emoij') == null) {
       renderPicker(threadElement)
+    } else {
+      setTimeout(loadThread, 2000)
+      return
     }
-  }, 300))
-  observer.observe(document, {
-    childList: true,
-    subtree: true
-  });
-})()
+  }
+  setTimeout(loadThread, 1000)
+}
+
+loadThread()
+

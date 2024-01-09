@@ -7,11 +7,19 @@ chrome.runtime.onMessage.addListener(function (request, _, sendResponse) {
         sendResponse(result.stickers.split(`
 `));
       } else {
-        sendResponse(['hangseed9',
-          'utyaduck',
-          'animated1455030680_by_sparkypro_bot']);
+        sendResponse([
+          'completepackpusnyangami',
+          'spv_0ec451a506a702544ba9799e1b639487_by_stckrrobot',
+          'yourcapoo'
+        ]);
+
       }
     })
   }
   return true
 })
+
+// premiums1ick3r
+// premiumstuff_2x
+// hangseed_cutie_cat
+// video1140485586_by_joker_zero_two_bot

@@ -28,8 +28,6 @@ const data = {
   sheet: {cols: 10, rows: 10}
 }
 
-const Loading = () => <div className="loading"></div>
-
 export default function EmojiPicker({control}: { control: Element }) {
   const [show, setShow] = useState(false)
   const [packs, setPacks] = useState([])
@@ -38,6 +36,8 @@ export default function EmojiPicker({control}: { control: Element }) {
   chrome.runtime.sendMessage({cmd: "get_packs"}, (rs : []) => {
     // @ts-ignore
     let packs = (stickers  as [] || []).filter((pack: any) => rs.includes(pack.id))
+    // @ts-ignore
+    packs = packs.sort((a: any, b: any) => rs.indexOf(a.id) - rs.indexOf(b.id))
     setPacks(packs)
   });
 
@@ -48,6 +48,7 @@ export default function EmojiPicker({control}: { control: Element }) {
       triggerInputChange(input, input.textContent?.toString(), () => {
         setShow(false)
       })
+      input.focus()
     }
   }
 

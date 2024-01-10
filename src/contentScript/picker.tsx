@@ -38,11 +38,11 @@ export default function HOCEmojiPicker(control: Element, packs: any[]) {
     const onEmojiSelect = (emoji: any) => {
       let input = control.querySelector('textarea')
       if (input) {
+        input.focus()
         input.textContent += `![${emoji.id}](${emoji.src})`;
         triggerInputChange(input, input.textContent?.toString(), () => {
           setShow(false)
         })
-        input.focus()
       }
     }
 

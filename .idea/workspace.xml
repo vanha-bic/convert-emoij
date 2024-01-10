@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e359cb9-d747-4b48-87d9-13dbe1092a40" name="Changes" comment="update focus input when choose emoij">
-      <change beforePath="$PROJECT_DIR$/src/contentScript/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contentScript/index.tsx" afterDir="false" />
+    <list default="true" id="2e359cb9-d747-4b48-87d9-13dbe1092a40" name="Changes" comment="improve performance">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contentScript/picker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/contentScript/picker.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +64,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update focus input when choose emoij" />
-    <option name="LAST_COMMIT_MESSAGE" value="update focus input when choose emoij" />
+    <MESSAGE value="improve performance" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve performance" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

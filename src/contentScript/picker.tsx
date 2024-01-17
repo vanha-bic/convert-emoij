@@ -2,9 +2,6 @@ import './picker.css'
 import {useState} from "react";
 import Picker from '@emoji-mart/react'
 
-
-import stickers from './data/stickers.json'
-
 // @ts-ignore
 
 function triggerInputChange(node: any, value = '', cb: any) {

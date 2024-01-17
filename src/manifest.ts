@@ -1,4 +1,4 @@
-import { defineManifest } from '@crxjs/vite-plugin'
+import {defineManifest} from '@crxjs/vite-plugin'
 import packageData from '../package.json'
 
 export default defineManifest({
@@ -23,7 +23,7 @@ export default defineManifest({
   content_scripts: [
     {
       matches: ['https://chat.beincom.com/*'],
-      js: ["./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",'src/contentScript/index.tsx'],
+      js: ["./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js", 'src/contentScript/index.tsx'],
     },
   ],
   web_accessible_resources: [
@@ -32,5 +32,5 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: [ 'storage'],
+  permissions: ['storage'],
 })
